@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Mastery A1-A2</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div id="app-container">
+    <header>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="background: white; width: 35px; height: 35px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                <span style="color: var(--primary); font-weight: bold;">EN</span>
+            </div>
+            <h2>EnglishMaster</h2>
+        </div>
+        <nav style="display: flex; align-items: center; gap: 10px;">
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Kelime ara..."
+                style="display: none; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.9rem;"
+                oninput="filterWords()"
+            >
+            <button onclick="switchTab('study')" id="btn-study" class="active">Öğren</button>
+            <button onclick="switchTab('quiz')" id="btn-quiz">Test</button>
+            <button onclick="switchTab('list')" id="btn-list">Liste</button>
+        </nav>
+    </header>
+
+    <!-- Öğrenme Modu -->
+    <main id="study-section">
+        <div class="word-card" onclick="speakCurrentWord()">
+            <div class="speaker-icon">🔊</div>
+            <div class="word-en" id="word-en">Loading...</div>
+            <div class="word-tr" id="word-tr">Yükleniyor...</div>
+            <div id="word-cat" style="margin-top: 15px; font-size: 0.8rem; background: #f1f5f9; padding: 4px 12px; border-radius: 20px; color: #64748b;">A1 - Category</div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" style="background: white; border: 1px solid #cbd5e1;" onclick="prevWord()">⬅️ Geri</button>
+            <button class="btn btn-primary" onclick="nextWord()">İleri ➡️</button>
+            <button class="btn" style="background: #e2e8f0;" onclick="shuffleWords()">🔀 Karıştır</button>
+        </div>
+    </main>
+
+    <!-- Test Modu -->
+    <main id="quiz-section" class="hidden">
+        <div id="quiz-container">
+            <div style="margin-bottom: 25px; text-align: center;">
+                <div id="quiz-question-en" style="font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 5px;">Word</div>
+                <div id="quiz-instruction" style="color: #64748b;">Kelimesinin Türkçe karşılığı nedir?</div>
+            </div>
+            <div class="options-grid" id="quiz-options"></div>
+            <div style="margin-top: 30px; text-align: center; font-weight: bold; color: var(--text);">
+                Skor: <span id="score" style="color: var(--secondary); font-size: 1.2rem;">0</span>
+            </div>
+        </div>
+        <div id="quiz-finished" class="hidden" style="text-align: center;">
+            <h2 style="color: var(--success); margin-bottom: 10px;">Tebrikler! 🎉</h2>
+            <p>Tüm kelimeleri başarıyla tamamladın.</p>
+            <button class="btn btn-primary" style="margin: 20px auto;" onclick="resetQuizProgress()">Testi Sıfırla</button>
+        </div>
+    </main>
+
+    <!-- Liste Modu -->
+    <main id="list-section" class="hidden">
+        <div id="word-list" style="display: flex; flex-direction: column; gap: 8px; padding: 0 10px;"></div>
+    </main>
+
+    <div class="stats" id="stats-bar">
+        <span id="stat-label">İlerleme:</span>
+        <span id="progress-count">0</span> / <span id="total-count">0</span>
+        <div class="progress-bar-bg">
+            <div id="progress-fill"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="words.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
