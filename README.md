@@ -58,6 +58,10 @@ Kelime arama, sesli telaffuz, ilerleme takibi ve quiz sistemi içerir.
         
     
 
+https://github.com/user-attachments/assets/85b93b6c-640a-4424-9142-80ec58a3b349
+
+
+
 ----------
 
 ## **🧠 Proje Yapısı**
